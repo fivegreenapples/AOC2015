@@ -1,6 +1,7 @@
 package utils
 
 import (
+	"math"
 	"strconv"
 	"strings"
 )
@@ -29,6 +30,26 @@ func CsvToStrings(in string) []string {
 	in = strings.Trim(in, ",")
 	bits := strings.Split(in, ",")
 	return bits
+}
+func MultilineCsvToInts(in string, sep string) [][]int {
+	ret := [][]int{}
+	for _, l := range Lines(in) {
+		l = strings.TrimSpace(l)
+		l = strings.Trim(l, sep)
+		bits := strings.Split(l, sep)
+		ret = append(ret, StringsToInts(bits))
+	}
+	return ret
+}
+func MultilineCsvToStrings(in string, sep string) [][]string {
+	ret := [][]string{}
+	for _, l := range Lines(in) {
+		l = strings.TrimSpace(l)
+		l = strings.Trim(l, sep)
+		bits := strings.Split(l, sep)
+		ret = append(ret, bits)
+	}
+	return ret
 }
 
 func StringsToInts(inStrings []string) []int {
@@ -73,4 +94,23 @@ func StringSliceReverse(in []string) []string {
 		in[left], in[right] = in[right], in[left]
 	}
 	return in
+}
+
+func Min(in ...int) int {
+	minimum := math.MaxInt64
+	for _, v := range in {
+		if v < minimum {
+			minimum = v
+		}
+	}
+	return minimum
+}
+func Max(in ...int) int {
+	maximum := math.MinInt64
+	for _, v := range in {
+		if v > maximum {
+			maximum = v
+		}
+	}
+	return maximum
 }
