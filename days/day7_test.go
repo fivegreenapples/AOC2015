@@ -39,20 +39,3 @@ func TestDay7Part1(t *testing.T) {
 	}
 
 }
-
-func TestDay9Part2(t *testing.T) {
-
-	testInputs := map[string]string{
-		"": "",
-	}
-
-	dayRunner := NewRunner(testing.Verbose())
-
-	for in, expectedOut := range testInputs {
-		out, _ := dayRunner.Run(9, 2, in)
-		if out != expectedOut {
-			t.Errorf("day9 failed with %s. Expected %s, got %s", in, expectedOut, out)
-		}
-	}
-
-}
