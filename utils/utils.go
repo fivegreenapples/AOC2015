@@ -96,6 +96,12 @@ func StringSliceReverse(in []string) []string {
 	return in
 }
 
+func IntSliceReverse(in []int) []int {
+	for left, right := 0, len(in)-1; left < right; left, right = left+1, right-1 {
+		in[left], in[right] = in[right], in[left]
+	}
+	return in
+}
 func Min(in ...int) int {
 	minimum := math.MaxInt64
 	for _, v := range in {
