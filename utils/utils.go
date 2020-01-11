@@ -120,3 +120,18 @@ func Max(in ...int) int {
 	}
 	return maximum
 }
+
+func Sum(vals ...int) int {
+	sum := 0
+	for _, v := range vals {
+		sum += v
+	}
+	return sum
+}
+func Product(vals ...int) int {
+	sum := 1
+	for _, v := range vals {
+		sum *= v
+	}
+	return sum
+}
